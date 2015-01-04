@@ -9,6 +9,8 @@ jade           = require "gulp-jade"
 plumber        = require "gulp-plumber"
 reload         = require "gulp-livereload"
 source         = require "vinyl-source-stream"
+uglify         = require "gulp-uglify"
+streamify      = require "gulp-streamify"
 
 sass           = require "gulp-sass"
 concat         = require "gulp-concat"
@@ -54,10 +56,14 @@ b.transform coffee_react
 bundler = b
 
 bundle = (ids)->
-  bundler.bundle()
+  js = bundler.bundle()
     .on "error", (error) -> console.log error
     .pipe source(files.javascripts.name)
-    .pipe gulp.dest(files.javascripts.dest)
+
+  if PROD
+    js = js.pipe streamify(uglify())
+
+  js.pipe gulp.dest(files.javascripts.dest)
 
 gulp.task "javascripts", -> bundle
 
