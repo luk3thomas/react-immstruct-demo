@@ -16,9 +16,8 @@ module.exports = React.createClass
 
   reset: (e)->
     e.stopPropagation()
-    tick = 0
-    @props.stopwatch.cursor("time").set "tick",    tick
-    @props.stopwatch.cursor("time").set "display", time.parse(tick).display
+    @props.stopwatch.cursor("time").set "tick",    0
+    @props.stopwatch.cursor("time").set "display", time.parse(0).display
     @props.stopwatch.update "laps", (laps) -> laps.clear()
 
   pause: ->
@@ -48,26 +47,27 @@ module.exports = React.createClass
 
   render: ->
     cursor = @props.stopwatch.cursor("time")
+    laps   = @props.stopwatch.get("laps")
     text   = if cursor.get("running") then "Stop" else "Start"
     [minute, second, hundreth] = time.parts(cursor.get("display"))
 
-    total = @props.stopwatch.get("laps").reduce (m, d) ->
+    total = laps.reduce (m, d) ->
       d.duration + m
     , 0
 
-    average  = total / @props.stopwatch.get("laps").count() or 1
-    complete = (cursor.get("tick") - total) / average
+    last     = laps.slice(-1).first()?.duration or 1
+    complete = (cursor.get("tick") - total) / last
     offset   = Math.max 1448 - 1448 * complete, 0
     rotation = complete * 360 or 0
 
     classes = cx
       "stopwatch-container": true
       running: cursor.get "running"
-      "has-laps": @props.stopwatch.get("laps").count()
+      "has-laps": laps.count()
 
     # if there is time on the clock
     if cursor.get("tick") > 0
-      laps  = <Lapper tick={cursor.get("tick")} running={cursor.get("running")} laps={@props.stopwatch.cursor(["laps"])}></Lapper>
+      lapper  = <Lapper tick={cursor.get("tick")} running={cursor.get("running")} laps={@props.stopwatch.cursor("laps")}></Lapper>
 
     if cursor.get("tick") > 0 and not cursor.get("running")
       reset = <button className="reset-button button fa fa-refresh" onClick={@reset}></button>
@@ -91,7 +91,7 @@ module.exports = React.createClass
         </svg>
         <div className="laps-container">
           {reset}
-          {laps}
+          {lapper}
         </div>
       </div>
     )

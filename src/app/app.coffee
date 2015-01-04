@@ -18,7 +18,6 @@ data        = immstruct "app",
     laps: []
 
 window.i = immstruct
-window.d = data
 
 routes = (
   <Route handler={Main} path="/">
