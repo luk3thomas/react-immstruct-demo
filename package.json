@@ -1,0 +1,43 @@
+{
+  "name": "clock",
+  "version": "1.0.0",
+  "description": "Clock",
+  "main": "src/app.coffee",
+  "author": "Luke Thomas",
+  "scripts": {
+    "test": "NODE_PATH=./src ./node_modules/karma/bin/karma start --single-run test.conf.coffee",
+    "testw": "NODE_PATH=./src ./node_modules/karma/bin/karma start test.conf.coffee",
+    "build": "rm -rf dest/* && NODE_PATH=./src ./node_modules/.bin/gulp build --require coffee-script",
+    "watch": "NODE_PATH=./src ./node_modules/.bin/gulp auto-reload --require coffee-script",
+    "start": "npm run build && npm run watch"
+  },
+  "dependencies": {
+    "immstruct": "^1.2.1",
+    "react": "^0.12.0",
+    "react-router": "^0.11.6"
+  },
+  "devDependencies": {
+    "browserify": "^7.0.3",
+    "coffee-reactify": "^2.1.0",
+    "coffee-script": "^1.8.0",
+    "coffeeify": "^1.0.0",
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^2.0.0",
+    "gulp-coffeeify": "^0.1.2",
+    "gulp-concat": "^2.4.2",
+    "gulp-jade": "^0.10.0",
+    "gulp-livereload": "^3.0.2",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-plumber": "^0.6.6",
+    "gulp-sass": "^1.2.4",
+    "jasmine-core": "^2.1.3",
+    "karma": "^0.12.28",
+    "karma-bro": "^0.11.1",
+    "karma-coffee-preprocessor": "^0.2.1",
+    "karma-jasmine": "^0.3.2",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "sinon": "^1.12.2",
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "^2.2.1"
+  }
+}

@@ -1,0 +1,57 @@
+.lapper {
+    width: 200px;
+    margin: 0 auto;
+
+    .lap-button {
+
+        &:disabled {
+            color: $gray;
+        }
+    }
+
+    .lap {
+        list-style-type: decimal;
+        color: darken($gray, 35%);
+
+        &:first-child {
+
+            .lap-time {
+                position: relative;
+                left: -55px;
+            }
+        }
+
+        .lap-time {
+            color: $white;
+        }
+
+        .hundreths {
+            font-size: 0.8em;
+        }
+
+        .separator-minutes {
+            padding: 0 0.05em 0 0.2em;
+        }
+
+        .separator-seconds {
+            font-size: 0.8em;
+            padding: 0 0.05em 0 0.3em;
+        }
+    }
+
+    .lap-diff {
+        padding-left: 2em;
+
+        .sign {
+            color: $white;
+            font-size: 1.1em;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            text-align: center;
+
+            &.plus  { color: $red;   }
+            &.minus { color: $green; }
+        }
+    }
+}

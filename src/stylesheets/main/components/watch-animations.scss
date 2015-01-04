@@ -1,0 +1,15 @@
+.stopwatch-container {
+
+    .lap-timer {
+        opacity: 0;
+    }
+
+    // Show the red outline when we have at least
+    // one lap on the stopwatch
+    &.has-laps {
+
+        .lap-timer {
+            opacity: 1;
+        }
+    }
+}

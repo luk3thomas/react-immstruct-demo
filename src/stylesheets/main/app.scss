@@ -1,0 +1,36 @@
+body {
+    background: $black;
+    font: 16px/1.7 Lato, helvetica, arial, sans-serif;
+    padding-top: 3em;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6,
+div, p, li {
+    color: $white;
+}
+
+ul, ol, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+button {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.button {
+    font-size: 1.5em;
+    padding: 1em;
+}

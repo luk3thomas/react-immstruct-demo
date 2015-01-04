@@ -1,0 +1,53 @@
+.stopwatch-start {
+    text-align: center;
+    font-size: 3em;
+}
+
+.stopwatch-container {
+    text-align: center;
+}
+
+.stopwatch {
+    width: 100%;
+
+    .circle {
+        fill: transparent;
+        stroke: $white;
+        stroke-width: 3px;
+    }
+
+    .outline {
+        fill: transparent;
+        stroke: $red;
+        stroke-width: 3px;
+        stroke-dasharray: 1448;
+        stroke-dashoffset: 1448;
+        transform: rotate(-90deg);
+        transform-origin: 50%;
+    }
+
+    .ball {
+        fill: $red;
+        transform-origin: 250 250;
+    }
+
+    .time {
+        transform: translate(154px, 290px);
+
+        text {
+            color: $white;
+            font-size: 100px;
+            fill: $white;
+        }
+
+        .hundreth {
+            font-size: 45px;
+        }
+    }
+
+    .dialog {
+        fill: $white;
+        font-size: 50px;
+        text-anchor: left;
+    }
+}

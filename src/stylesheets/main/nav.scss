@@ -1,0 +1,19 @@
+.nav {
+    text-align: center;
+
+    .nav-item {
+        display: inline-block;
+        width: 50%;
+    }
+
+    .nav-link {
+        display: block;
+        color: $gray;
+        font-size: 2em;
+        padding: 1em;
+
+        &.active {
+            color: $white;
+        }
+    }
+}
